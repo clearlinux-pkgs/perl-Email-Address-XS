@@ -4,14 +4,14 @@
 #
 Name     : perl-Email-Address-XS
 Version  : 1.04
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.04.tar.gz
 Summary  : 'Parse and format RFC 5322 email addresses and groups'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Email-Address-XS-lib
-Requires: perl-Email-Address-XS-man
+Requires: perl-Email-Address-XS-lib = %{version}-%{release}
+BuildRequires : buildreq-cpan
 
 %description
 Email-Address-XS
@@ -23,20 +23,22 @@ To, Cc, Bcc, Reply-To, Sender, ...). Also it can generate a string
 value for those headers from a list of email addresses objects.
 Module is backward compatible with RFC 2822 and RFC 822.
 
+%package dev
+Summary: dev components for the perl-Email-Address-XS package.
+Group: Development
+Requires: perl-Email-Address-XS-lib = %{version}-%{release}
+Provides: perl-Email-Address-XS-devel = %{version}-%{release}
+
+%description dev
+dev components for the perl-Email-Address-XS package.
+
+
 %package lib
 Summary: lib components for the perl-Email-Address-XS package.
 Group: Libraries
 
 %description lib
 lib components for the perl-Email-Address-XS package.
-
-
-%package man
-Summary: man components for the perl-Email-Address-XS package.
-Group: Default
-
-%description man
-man components for the perl-Email-Address-XS package.
 
 
 %prep
@@ -65,9 +67,9 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -76,12 +78,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/Email/Address/XS.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/Email/Address/XS.pm
+
+%files dev
+%defattr(-,root,root,-)
+/usr/share/man/man3/Email::Address::XS.3
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Email/Address/XS/XS.so
-
-%files man
-%defattr(-,root,root,-)
-/usr/share/man/man3/Email::Address::XS.3
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/Email/Address/XS/XS.so
