@@ -4,10 +4,10 @@
 #
 Name     : perl-Email-Address-XS
 Version  : 1.04
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.04.tar.gz
-Summary  : 'Parse and format RFC 5322 email addresses and groups'
+Summary  : RFC 2822 Address Parsing and Creation
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
 Requires: perl-Email-Address-XS-lib = %{version}-%{release}
@@ -28,6 +28,7 @@ Summary: dev components for the perl-Email-Address-XS package.
 Group: Development
 Requires: perl-Email-Address-XS-lib = %{version}-%{release}
 Provides: perl-Email-Address-XS-devel = %{version}-%{release}
+Requires: perl-Email-Address-XS = %{version}-%{release}
 
 %description dev
 dev components for the perl-Email-Address-XS package.
