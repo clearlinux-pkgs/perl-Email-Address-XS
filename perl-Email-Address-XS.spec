@@ -4,7 +4,7 @@
 #
 Name     : perl-Email-Address-XS
 Version  : 1.04
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.04.tar.gz
 Summary  : RFC 2822 Address Parsing and Creation
