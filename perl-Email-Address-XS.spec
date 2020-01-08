@@ -4,13 +4,13 @@
 #
 Name     : perl-Email-Address-XS
 Version  : 1.04
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.04.tar.gz
-Summary  : RFC 2822 Address Parsing and Creation
+Summary  : 'Parse and format RFC 5322 email addresses and groups'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Email-Address-XS-lib = %{version}-%{release}
+Requires: perl-Email-Address-XS-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -26,7 +26,6 @@ Module is backward compatible with RFC 2822 and RFC 822.
 %package dev
 Summary: dev components for the perl-Email-Address-XS package.
 Group: Development
-Requires: perl-Email-Address-XS-lib = %{version}-%{release}
 Provides: perl-Email-Address-XS-devel = %{version}-%{release}
 Requires: perl-Email-Address-XS = %{version}-%{release}
 
@@ -34,22 +33,24 @@ Requires: perl-Email-Address-XS = %{version}-%{release}
 dev components for the perl-Email-Address-XS package.
 
 
-%package lib
-Summary: lib components for the perl-Email-Address-XS package.
-Group: Libraries
+%package perl
+Summary: perl components for the perl-Email-Address-XS package.
+Group: Default
+Requires: perl-Email-Address-XS = %{version}-%{release}
 
-%description lib
-lib components for the perl-Email-Address-XS package.
+%description perl
+perl components for the perl-Email-Address-XS package.
 
 
 %prep
 %setup -q -n Email-Address-XS-1.04
+cd %{_builddir}/Email-Address-XS-1.04
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -59,7 +60,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -79,12 +80,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/Email/Address/XS.pm
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Email::Address::XS.3
 
-%files lib
+%files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/Email/Address/XS/XS.so
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/Email/Address/XS.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/Email/Address/XS/XS.so
