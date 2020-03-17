@@ -4,7 +4,7 @@
 #
 Name     : perl-Email-Address-XS
 Version  : 1.04
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.04.tar.gz
 Summary  : 'Parse and format RFC 5322 email addresses and groups'
@@ -87,5 +87,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/Email/Address/XS.pm
-/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/Email/Address/XS/XS.so
+/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/Email/Address/XS.pm
+/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/auto/Email/Address/XS/XS.so
