@@ -7,7 +7,7 @@
 #
 Name     : perl-Email-Address-XS
 Version  : 1.05
-Release  : 31
+Release  : 32
 URL      : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.05.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PA/PALI/Email-Address-XS-1.05.tar.gz
 Summary  : 'Parse and format RFC 5322 email addresses and groups'
